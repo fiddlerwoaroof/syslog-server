@@ -15,6 +15,7 @@ The db needs to be precreated with this schema:
 create table messages (severity int, facility int, tag text, pid int, message text, host text, ts datetime default current_timestamp);
 create table dns_query (query_type text, request text, requester text, added text default current_timestamp);
 create table dns_reply (query text, reply text, added datetime default current_timestamp);
+create table untagged (ts datetime default current_timestamp, data text);
 #+END_SRC
 
 
@@ -25,4 +26,4 @@ create table dns_reply (query text, reply text, added datetime default current_t
 - batch db updates
 - improve filtering command line options
 - TUI / CLIM ui
-  
+- Add automagic db schema initialization

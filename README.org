@@ -1,0 +1,22 @@
+* Introduction
+
+This is a minimal implementation of a syslog-like protocol that is
+tested against a minimal syslog daemon included with Gentoo, rsyslogd
+and OpenWRT's log daemon.  This also includes a command line program
+that listens for incoming syslog connections, pretty prints them and
+then saves them to an sqlite db in /tmp/logs.db.
+
+By default, this client includes the ability to recognize dnsmasq's log
+entries and record them to their own tables.
+
+The db needs to be precreated with this schema:
+
+create table messages (severity int, facility int, tag text, pid int, message text, host text, ts datetime default current_timestamp);
+create table dns_query (query_type text, request text, requester text, added text default current_timestamp);
+create table dns_reply (query text, reply text, added datetime default current_timestamp);
+
+
+* TODO
+
+- other db backends
+- customizable db paths

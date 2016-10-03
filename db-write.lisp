@@ -9,6 +9,11 @@
 	 (result (dbi:execute query severity facility tag pid message host)))
     result))
 
+(defun log-untagged-to-sqlite (db &key line)
+  (let* ((db-query (dbi:prepare db "insert into untagged (data) values (?)"))
+	 (result (dbi:execute db-query line)))
+    result))
+
 (defun log-dnsquery-to-sqlite (db &key query-type query from)
   (let* ((db-query (dbi:prepare db "insert into dns_query (query_type, request, requester) values (?,?,?)"))
 	 (result (dbi:execute db-query query-type query from)))

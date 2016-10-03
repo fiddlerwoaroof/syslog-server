@@ -1,3 +1,7 @@
+;; This Source Code Form is subject to the terms of the Mozilla Public
+;; License, v. 2.0. If a copy of the MPL was not distributed with this
+;; file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 (in-package #:syslog_helper)
 
 (define-codecs facility ()
@@ -45,6 +49,14 @@
 (defgeneric handle-log-message (tag metadata message orig-line)
   (:method (tag metadata message orig-line)
     (declare (ignore tag metadata message))))
+
+(:method (tag metadata message orig-line)
+    (declare (ignore tag metadata message)))
+
+(defmethod handle-log-message :before ((tag (eql :untagged)) metadata message orig-line)
+  (declare (ignore metadata message))
+  (dbi:with-connection (db :sqlite3 :database-name "/tmp/logs.db")
+      (log-untagged-to-sqlite db :line orig-line)))
 
 (defmethod handle-log-message ((tag (eql :dnsmasq)) metadata message orig-line)
   (let* ((parsed-query (smug:parse (.dnsmasq-query) message))

@@ -11,12 +11,18 @@ entries and record them to their own tables.
 
 The db needs to be precreated with this schema:
 
+#+BEGIN_SRC SQL
 create table messages (severity int, facility int, tag text, pid int, message text, host text, ts datetime default current_timestamp);
 create table dns_query (query_type text, request text, requester text, added text default current_timestamp);
 create table dns_reply (query text, reply text, added datetime default current_timestamp);
+#+END_SRC
 
 
 * TODO
 
 - other db backends
 - customizable db paths
+- batch db updates
+- improve filtering command line options
+- TUI / CLIM ui
+  

@@ -9,24 +9,24 @@
   :author "Edward Langeley"
   :license "MPLv2"
   :depends-on (#:alexandria
-	       #:cffi
-	       #:cl-ansi-term
-	       #:cl-dbi
-	       #:dbd-sqlite3
-	       #:fwoar.lisputils
-	       #:net.didierverna.clon
-	       #:osicat
-	       #:positional-lambda
-	       #:serapeum
-	       #:smug
-	       #:swank
-	       #:usocket)
+               #:cffi
+               #:cl-ansi-term
+               #:cl-dbi
+               #:dbd-sqlite3
+               #:fwoar.lisputils
+               #:net.didierverna.clon
+               #:osicat
+               #:positional-lambda
+               #:serapeum
+               #:smug
+               #:swank
+               #:usocket)
   :serial t
   :components ((:file "package")
-	       (:file "utils")
-	       (:file "parser")
-	       (:file "db-write")
-	       (:file "syslog-server")
-	       (:file "log-handler")
-	       (:file "client")))
+               (:file "utils")
+               (:file "parser")
+               (:file "db-write")
+               (:file "syslog-server")
+               (:file "log-handler")
+               (:file "client")))
 

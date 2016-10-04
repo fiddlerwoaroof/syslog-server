@@ -2,7 +2,7 @@
 ;; License, v. 2.0. If a copy of the MPL was not distributed with this
 ;; file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-(in-package #:syslog_helper)
+(in-package #:syslog-server)
 
 (defun log-to-sqlite (db severity facility tag pid message host)
   (let* ((query (dbi:prepare db "insert into messages (severity, facility, tag, pid, message, host) values (?,?,?,?,?,?)"))

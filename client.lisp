@@ -2,7 +2,7 @@
 ;; License, v. 2.0. If a copy of the MPL was not distributed with this
 ;; file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-(in-package #:syslog_helper)
+(in-package #:syslog-server)
 
 (defsynopsis ()
   (flag :short-name "h" :long-name "help" :description "Show the help")
